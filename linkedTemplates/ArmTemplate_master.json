@@ -1,0 +1,656 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "shell-02-eun-adf-xkanlseuekfbzcalpxv"
+        },
+        "LnAtWorkSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnAtWorkSql'"
+        },
+        "LnBriefSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnBriefSql'"
+        },
+        "LnLabelDesignSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnLabelDesignSql'"
+        },
+        "LnMapBriefASSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnMapBriefASSql'"
+        },
+        "LnMapUserRegionSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnMapUserRegionSql'"
+        },
+        "LnRegionListSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnRegionListSql'"
+        },
+        "LnWorkflowSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnWorkflowSql'"
+        },
+        "LnSelfApproveWorkFlowSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnSelfApproveWorkFlowSql'"
+        },
+        "LnMapLabelDesignAssociatedSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnMapLabelDesignAssociatedSql'"
+        },
+        "Default Key Vault Service_properties_typeProperties_baseUrl": {
+            "type": "string",
+            "defaultValue": "https://shell-02-eun-kv-capuwlkf.vault.azure.net/"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLBrief_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLBrief_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLBrief_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLBrief_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLLabelDesign_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLLabelDesign_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLLabelDesign_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLLabelDesign_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLRegionList_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLRegionList_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLRegionList_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLRegionList_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLWorkflow_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLWorkflow_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLWorkflow_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLWorkflow_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "containerUri": {
+            "type": "string",
+            "metadata": "URI to storage account containing linked ARM templates"
+        },
+        "containerSasToken": {
+            "type": "string",
+            "metadata": "Sas token to storage account containing linked ARM templates"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "shell-02-eun-adf-xkanlseuekfbzcalpxv_ArmTemplate_0",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-02-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    },
+                    "LnAtWorkSql_connectionString": {
+                        "value": "[parameters('LnAtWorkSql_connectionString')]"
+                    },
+                    "LnBriefSql_connectionString": {
+                        "value": "[parameters('LnBriefSql_connectionString')]"
+                    },
+                    "LnLabelDesignSql_connectionString": {
+                        "value": "[parameters('LnLabelDesignSql_connectionString')]"
+                    },
+                    "LnMapBriefASSql_connectionString": {
+                        "value": "[parameters('LnMapBriefASSql_connectionString')]"
+                    },
+                    "LnMapUserRegionSql_connectionString": {
+                        "value": "[parameters('LnMapUserRegionSql_connectionString')]"
+                    },
+                    "LnRegionListSql_connectionString": {
+                        "value": "[parameters('LnRegionListSql_connectionString')]"
+                    },
+                    "LnWorkflowSql_connectionString": {
+                        "value": "[parameters('LnWorkflowSql_connectionString')]"
+                    },
+                    "LnSelfApproveWorkFlowSql_connectionString": {
+                        "value": "[parameters('LnSelfApproveWorkFlowSql_connectionString')]"
+                    },
+                    "LnMapLabelDesignAssociatedSql_connectionString": {
+                        "value": "[parameters('LnMapLabelDesignAssociatedSql_connectionString')]"
+                    },
+                    "Default Key Vault Service_properties_typeProperties_baseUrl": {
+                        "value": "[parameters('Default Key Vault Service_properties_typeProperties_baseUrl')]"
+                    },
+                    "LnAtWorkDataLakeParquet_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnAtWorkDataLakeParquet_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_tenant')]"
+                    },
+                    "LnAtWorkDataLakeParquet_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnAtWorkDataLakeParquet_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLBrief_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLBrief_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLBrief_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLBrief_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLBrief_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLBrief_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLBrief_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLBrief_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLLabelDesign_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLLabelDesign_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLLabelDesign_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLLabelDesign_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLLabelDesign_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLLabelDesign_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLLabelDesign_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLLabelDesign_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLMapBriefAS_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLMapBriefAS_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLMapBriefAS_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLMapBriefAS_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLMapBriefAS_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLMapBriefAS_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLMapBriefAS_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLMapBriefAS_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLMapUserRegion_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLMapUserRegion_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLMapUserRegion_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLMapUserRegion_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLMapUserRegion_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLMapUserRegion_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLMapUserRegion_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLMapUserRegion_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLRegionList_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLRegionList_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLRegionList_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLRegionList_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLRegionList_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLRegionList_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLRegionList_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLRegionList_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLWorkflow_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLWorkflow_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLWorkflow_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLWorkflow_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLWorkflow_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLWorkflow_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLWorkflow_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLWorkflow_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnAtWorkDataLakeMetaData_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnAtWorkDataLakeMetaData_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_tenant')]"
+                    },
+                    "LnAtWorkDataLakeMetaData_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnAtWorkDataLakeMetaData_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLSelfApproveWorkflow_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLSelfApproveWorkflow_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLSelfApproveWorkflow_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLSelfApproveWorkflow_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnADLMapLabelDesignAssociated_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnADLMapLabelDesignAssociated_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_tenant')]"
+                    },
+                    "LnADLMapLabelDesignAssociated_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnADLMapLabelDesignAssociated_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_resourceGroupName')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "shell-02-eun-adf-xkanlseuekfbzcalpxv_ArmTemplate_1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-02-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    },
+                    "LnDataLakeMetaDataBrief_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeMetaDataBrief_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeMetaDataBrief_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeMetaDataBrief_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnDataLakeRegionListGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeRegionListGetMetaData_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeRegionListGetMetaData_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeRegionListGetMetaData_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnDataLakeWorkflowGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeWorkflowGetMetaData_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeWorkflowGetMetaData_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeWorkflowGetMetaData_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_resourceGroupName')]"
+                    },
+                    "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_dataLakeStoreUri": {
+                        "value": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_dataLakeStoreUri')]"
+                    },
+                    "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_tenant": {
+                        "value": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_tenant')]"
+                    },
+                    "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_subscriptionId": {
+                        "value": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_subscriptionId')]"
+                    },
+                    "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_resourceGroupName": {
+                        "value": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_resourceGroupName')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'shell-02-eun-adf-xkanlseuekfbzcalpxv_ArmTemplate_0')]"
+            ]
+        },
+        {
+            "name": "shell-02-eun-adf-xkanlseuekfbzcalpxv_ArmTemplate_2",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-02-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'shell-02-eun-adf-xkanlseuekfbzcalpxv_ArmTemplate_1')]"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,506 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "shell-02-eun-adf-xkanlseuekfbzcalpxv"
+        },
+        "LnAtWorkSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnAtWorkSql'"
+        },
+        "LnBriefSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnBriefSql'"
+        },
+        "LnLabelDesignSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnLabelDesignSql'"
+        },
+        "LnMapBriefASSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnMapBriefASSql'"
+        },
+        "LnMapUserRegionSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnMapUserRegionSql'"
+        },
+        "LnRegionListSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnRegionListSql'"
+        },
+        "LnWorkflowSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnWorkflowSql'"
+        },
+        "LnSelfApproveWorkFlowSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnSelfApproveWorkFlowSql'"
+        },
+        "LnMapLabelDesignAssociatedSql_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'LnMapLabelDesignAssociatedSql'"
+        },
+        "Default Key Vault Service_properties_typeProperties_baseUrl": {
+            "type": "string",
+            "defaultValue": "https://shell-02-eun-kv-capuwlkf.vault.azure.net/"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnAtWorkDataLakeParquet_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLBrief_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLBrief_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLBrief_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLBrief_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLLabelDesign_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLLabelDesign_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLLabelDesign_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLLabelDesign_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLMapBriefAS_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLMapUserRegion_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLRegionList_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLRegionList_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLRegionList_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLRegionList_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLWorkflow_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLWorkflow_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLWorkflow_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLWorkflow_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnAtWorkDataLakeMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLSelfApproveWorkflow_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnADLMapLabelDesignAssociated_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/Default Key Vault Service')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureKeyVault",
+                "typeProperties": {
+                    "baseUrl": "[parameters('Default Key Vault Service_properties_typeProperties_baseUrl')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnAtWorkSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnAtWorkSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnAtWorkDataLakeParquet')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnAtWorkDataLakeParquet_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnBriefSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnBriefSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLBrief')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLBrief_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLBrief_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLBrief_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLBrief_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnLabelDesignSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnLabelDesignSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLLabelDesign')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLLabelDesign_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLLabelDesign_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLLabelDesign_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLLabelDesign_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnMapBriefASSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnMapBriefASSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLMapBriefAS')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLMapBriefAS_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLMapBriefAS_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLMapBriefAS_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLMapBriefAS_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnMapUserRegionSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnMapUserRegionSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLMapUserRegion')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLMapUserRegion_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLMapUserRegion_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLMapUserRegion_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLMapUserRegion_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLRegionList')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLRegionList_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLRegionList_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLRegionList_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLRegionList_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLWorkflow')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLWorkflow_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLWorkflow_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLWorkflow_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLWorkflow_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnRegionListSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnRegionListSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnWorkflowSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnWorkflowSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnAtWorkDataLakeMetaData')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnAtWorkDataLakeMetaData_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnSelfApproveWorkFlowSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnSelfApproveWorkFlowSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLSelfApproveWorkflow')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLSelfApproveWorkflow_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnMapLabelDesignAssociatedSql')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('LnMapLabelDesignAssociatedSql_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnADLMapLabelDesignAssociated')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnADLMapLabelDesignAssociated_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}

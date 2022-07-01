@@ -1,0 +1,1202 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "shell-02-eun-adf-xkanlseuekfbzcalpxv"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeMetaDataBrief_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeRegionListGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeWorkflowGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_dataLakeStoreUri": {
+            "type": "string",
+            "defaultValue": "https://shell01eunadls1epanejtqi.azuredatalakestore.net/webhdfs/v1"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "db1e96a8-a3da-442a-930b-235cac24cd5c"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_subscriptionId": {
+            "type": "string",
+            "defaultValue": "5a92fb6b-434c-4a6c-a6ff-54b7840956c3"
+        },
+        "LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_resourceGroupName": {
+            "type": "string",
+            "defaultValue": "shell-01-rg-wwgzhvivioyqpmwykwza"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeMetaDataBrief')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeMetaDataBrief_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeGetMetaDataLabelDesign')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeGetMetaDataLabelDesign_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeGetMetaDataMapASBrief')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeGetMetaDataMapASBrief_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeMapUserRegionGetMetaData')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeMapUserRegionGetMetaData_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeRegionListGetMetaData')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeRegionListGetMetaData_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeWorkflowGetMetaData')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeWorkflowGetMetaData_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeSelfApproveWorkfloGetMetaData')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeSelfApproveWorkfloGetMetaData_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LnDataLakeLabelDesignAssociatedMetaData')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureDataLakeStore",
+                "typeProperties": {
+                    "dataLakeStoreUri": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_dataLakeStoreUri')]",
+                    "tenant": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_tenant')]",
+                    "subscriptionId": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_subscriptionId')]",
+                    "resourceGroupName": "[parameters('LnDataLakeLabelDesignAssociatedMetaData_properties_typeProperties_resourceGroupName')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsAtWorkDataLakeParquet')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnAtWorkDataLakeParquet",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    }
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureDataLakeStoreLocation",
+                        "fileName": {
+                            "value": "@dataset().FileName",
+                            "type": "Expression"
+                        },
+                        "folderPath": "PROJECT/P00002-DEV-ENRICHED/Unharmonised/Sensitive/1st_Party/DPLM_AZURE_SHELL_BLOB/ARTWORK_SPECIFICATION"
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": []
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsAtWorkSql')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnAtWorkSql",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlTable",
+                "schema": [
+                    {
+                        "name": "ITEM_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ITEM_REVISION_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_DESC",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_TYPE",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CREATED_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OWNER_USER_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OWNER_USER_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OWNER_GROUP_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_USER_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_USER_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RELEASE_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RELEASE_STATUS",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BCI_CR_NO",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "TB_ARTWORKSPECIFICATION"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsADLBrief')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnAtWorkDataLakeParquet",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureDataLakeStoreLocation",
+                        "fileName": "part-00000-ba343e55-8a2c-4947-8481-83461b312559-c000.snappy.parquet",
+                        "folderPath": "PROJECT/P00002-DEV-ENRICHED/Unharmonised/Sensitive/1st_Party/DPLM_AZURE_SHELL_BLOB/BRIEF"
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "BRIEF_LAST_UPDATED_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_ITEM_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OBJECT_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_CREATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_LAST_UPDATED_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OWNER_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OBJECT_DESC",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_RELEASE_STATUS",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_RELEASE_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_ITEM_REVISION_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OWNER_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_LAST_UPDATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OBJECT_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BUSINESS_CASE_INTRODUCTION_CHANGE_REQUEST_NO",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OWNER_GROUP_NAME",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsBriefSql')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnBriefSql",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlTable",
+                "schema": [
+                    {
+                        "name": "ITEM_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ITEM_REVISION_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_DESC",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_TYPE",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CREATED_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OWNER_USER_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OWNER_USER_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OWNER_GROUP_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_USER_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_USER_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RELEASE_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RELEASE_STATUS",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BCI_CR_NO",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "TB_BRIEF"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsBrief')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnADLBrief",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureDataLakeStoreLocation",
+                        "fileName": "part-00000-ba343e55-8a2c-4947-8481-83461b312559-c000.snappy.parquet",
+                        "folderPath": "PROJECT/P00002-DEV-ENRICHED/Unharmonised/Sensitive/1st_Party/DPLM_AZURE_SHELL_BLOB/BRIEF"
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "BRIEF_LAST_UPDATED_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_ITEM_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OBJECT_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_CREATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_LAST_UPDATED_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OWNER_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OBJECT_DESC",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_RELEASE_STATUS",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_RELEASE_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_ITEM_REVISION_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OWNER_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_LAST_UPDATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OBJECT_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BUSINESS_CASE_INTRODUCTION_CHANGE_REQUEST_NO",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BRIEF_OWNER_GROUP_NAME",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsLabelDesign')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnADLLabelDesign",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureDataLakeStoreLocation",
+                        "fileName": "part-00000-9f050a51-2dfe-4be7-977f-ad9c28f352ae-c000.snappy.parquet",
+                        "folderPath": "PROJECT/P00002-DEV-ENRICHED/Unharmonised/Sensitive/1st_Party/DPLM_AZURE_SHELL_BLOB/LABEL_DESIGN"
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "LABEL_DESIGN_OBJECT_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_OBJECT_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_OWNER_GROUP_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_ITEM_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_OBJECT_DESC",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_RELEASE_STATUS",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_RELEASE_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_OWNER_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_ITEM_REVISION_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_OWNER_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_CREATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_LAST_UPDATED_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_LAST_UPDATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_ARTWORK_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_LAST_UPDATED_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_MATURITY",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsLabelDesignSql')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnLabelDesignSql",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlTable",
+                "schema": [
+                    {
+                        "name": "ITEM_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ITEM_REVISION_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_DESC",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_TYPE",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CREATED_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OWNING_USER_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OWNING_USER_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OWNER_GROUP_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_USER_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_USER_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LAST_UPDATED_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RELEASE_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RELEASE_STATUS",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_ARTWORK_TYPE",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LABEL_DESIGN_MATURITY",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "TB_LABELDESIGN"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsADLMapBriefAS')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnADLMapBriefAS",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureDataLakeStoreLocation",
+                        "fileName": "part-00000-db299391-64b9-463d-9ed6-23f5d3ab3ca2-c000.snappy.parquet",
+                        "folderPath": "PROJECT/P00002-DEV-ENRICHED/Unharmonised/NonSensitive/1st_Party/DPLM_AZURE_SHELL_BLOB/ARTWORK_SPECIFICATION_ASSOCIATED_OBJECT_MAPPING"
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "ARTWORK_SPECIFICATION_OBJECT_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION_ASSOCIATED_OBJECT_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION_ASSOCIATED_OBJECT_ITEM_REVISION_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION_ITEM_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION_ASSOCIATED_OBJECT_ITEM_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION_ITEM_REVISION_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION_ASSOCIATED_OBJECT_CREATED_DATETIME",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsMapBriefASSql')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnMapBriefASSql",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlTable",
+                "schema": [
+                    {
+                        "name": "ARTWORK_SPECIFICATION_ITEM_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION_REVISION_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_ITEM_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_ITEM_REVISION_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ARTWORK_SPECIFICATION__OBJECT_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OBJECT_CREATED_DATETIME",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OBJECT_TYPE",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "TB_MAPPING_BRIEF_ARTWORKSPECIFICATION"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsADLMapUserRegion')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnADLMapUserRegion",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureDataLakeStoreLocation",
+                        "fileName": "part-00000-1ea2def8-a7a4-4b7f-b0ef-1a6eee17bc96-c000.snappy.parquet",
+                        "folderPath": "PROJECT/P00002-DEV-ENRICHED/Unharmonised/Sensitive/1st_Party/DPLM_AZURE_SHELL_BLOB/USER_REGION_MAPPING"
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "REGION_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_REGION_MAP_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_REGION_START_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_GROUP",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_ROLE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SUPER_ADMIN_ACCESS_IND",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_STATUS",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_REGION_END_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_LOGIN_LICENSE_LEVEL",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_COUNTRY",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "USER_LAST_LOGIN_DATETIME",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsMapUserRegionSql')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnMapUserRegionSql",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlTable",
+                "schema": [
+                    {
+                        "name": "USER_REGION_MAP_ID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "USER_TYPE",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "USER_NAME",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "USER_ID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "COUNTRY",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "REGION_ID",
+                        "type": "smallint",
+                        "precision": 5
+                    },
+                    {
+                        "name": "GROUPS",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ROLE",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "STATUS",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "USER_REGION_EFFECTIVE_FROM_DATE",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "USER_REGION_EFFECTIVE_TO_DATE",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "TB_MAPPING_USER_REGION"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DsADLWorkflow')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "LnADLWorkflow",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureDataLakeStoreLocation",
+                        "fileName": "part-00000-ce28d57b-9798-4dea-b6d6-9b8dbf8bba38-c000.snappy.parquet",
+                        "folderPath": "PROJECT/P00002-DEV-ENRICHED/Unharmonised/Sensitive/1st_Party/DPLM_AZURE_SHELL_BLOB/WORKFLOW"
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "WORKFLOW_INITIATOR_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_JOB_OBJECT_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_DUE_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_REVIEWER_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_INITIATOR_ROLE_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_REVIEWER_ROLE_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_OBJECT_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TEMPLATE_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_START_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_REVIEWER_GROUP_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_REVIEWER_USER_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_INITIATOR_GROUP_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_LAST_UPDATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_TEMPLATE_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_RESULT",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_PARENT_TEMPLATE_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_OBJECT_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_CREATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_ITEM_REVISION_CREATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_END_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_ITEM_REVISION_ID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_COMMENT",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_INITIATOR_USER_NAME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_ITEM_REVISION_LAST_UPDATED_DATETIME",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_TASK_TYPE",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WORKFLOW_ITEM_ID",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        }
+    ]
+}
